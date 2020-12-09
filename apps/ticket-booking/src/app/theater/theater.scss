@@ -2,6 +2,7 @@
   background-color: black;
   display: flex;
   flex-direction: column;
-  padding: 16;
+  padding: 16px;
   overflow: auto;
+  flex-grow: 1;
 }

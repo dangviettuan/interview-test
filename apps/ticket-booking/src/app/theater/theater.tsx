@@ -13,7 +13,9 @@ export function Theater(props: TheaterProps) {
   return (
     <div className="theater">
       <TransformWrapper defaultScale={0.5}>
-        <TransformComponent>{children}</TransformComponent>
+        <TransformComponent>
+          <div>{children}</div>
+        </TransformComponent>
       </TransformWrapper>
     </div>
   );
