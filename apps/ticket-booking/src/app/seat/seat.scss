@@ -1,0 +1,41 @@
+.seat {
+  width: 40px;
+  height: 40px;
+  outline: none;
+  border: 4px solid transparent;
+  border-radius: 12px;
+  margin: 2px;
+}
+
+.seat-empty {
+  background: transparent;
+  pointer-events: none;
+}
+
+.seat-available {
+  background: transparent;
+}
+
+.seat-selected {
+  background-color: white;
+}
+
+.seat-selecting {
+  background-color: orange;
+}
+
+.seat-sold {
+  background-color: gray;
+}
+
+.seat-standard {
+  border-color: white;
+}
+
+.seat-vip {
+  border-color: green;
+}
+
+.seat-deluxe {
+  border-color: blue;
+}

@@ -1,15 +1,61 @@
 import React from 'react';
+import clsx from 'clsx';
 
 import './seat.scss';
 
-/* eslint-disable-next-line */
-export interface SeatProps {}
+export type SeatStatus =
+  | 'empty'
+  | 'selected'
+  | 'selecting'
+  | 'available'
+  | 'sold';
+export type SeatType = 'standard' | 'vip' | 'deluxe';
+export interface SeatProps {
+  row?: string;
+  col?: number;
+  onClick?: (row?: string, col?: number) => void;
+  status?: SeatStatus;
+  type?: SeatType;
+}
 
 export function Seat(props: SeatProps) {
+  const { col, onClick, row, status, type } = props;
+  const handleOnClick = () => {
+    if (status === 'available' || status === 'selected') {
+      onClick(row, col);
+    }
+  };
   return (
-    <div>
-      <h1>Welcome to Seat!</h1>
-    </div>
+    <button
+      onClick={handleOnClick}
+      className={clsx([
+        'seat',
+        {
+          ['seat-empty']: status === 'empty',
+          ['seat-selected']: status === 'selected',
+          ['seat-available']: status === 'available',
+          ['seat-selecting']: status === 'selecting',
+          ['seat-sold']: status === 'sold',
+          ['seat-standard']:
+            type === 'standard' &&
+            status !== 'empty' &&
+            status !== 'selected' &&
+            status !== 'sold',
+          ['seat-vip']:
+            type === 'vip' &&
+            status !== 'empty' &&
+            status !== 'selected' &&
+            status !== 'sold',
+          ['seat-deluxe']:
+            type === 'deluxe' &&
+            status !== 'empty' &&
+            status !== 'selected' &&
+            status !== 'sold',
+        },
+      ])}
+    >
+      {col}
+    </button>
   );
 }
 
