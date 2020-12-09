@@ -9,6 +9,7 @@ import { data } from './data';
 import SeatRow from './seat-row/seat-row';
 import { Seat } from './seat/seat';
 import { SeatStatus } from './types';
+import Header from './header/header';
 export function App() {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
@@ -44,24 +45,26 @@ export function App() {
         <Logo width="75" height="75" />
         <h1>Welcome to ticket-booking!</h1>
       </header> */}
-      <main>
-        <Theater>
-          {data.rows.map((row, rowIndex) => (
-            <SeatRow key={rowIndex} label={row.name}>
-              {row.seats.map((seat, seatIndex) => (
-                <Seat
-                  onClick={handleSeatClick}
-                  key={seatIndex + 1}
-                  type={seat.type}
-                  status={isSelected(row.name, seatIndex + 1, seat.status)}
-                  col={seatIndex + 1}
-                  row={row.name}
-                />
-              ))}
-            </SeatRow>
-          ))}
-        </Theater>
-      </main>
+      <Header
+        subTitle={`${data.room} | ${data.filmType}`}
+        title={data.filmName}
+      />
+      <Theater>
+        {data.rows.map((row, rowIndex) => (
+          <SeatRow key={rowIndex} label={row.name}>
+            {row.seats.map((seat, seatIndex) => (
+              <Seat
+                onClick={handleSeatClick}
+                key={seatIndex + 1}
+                type={seat.type}
+                status={isSelected(row.name, seatIndex + 1, seat.status)}
+                col={seatIndex + 1}
+                row={row.name}
+              />
+            ))}
+          </SeatRow>
+        ))}
+      </Theater>
     </div>
   );
 }

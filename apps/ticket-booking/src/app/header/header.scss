@@ -1,4 +1,11 @@
 .header {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: white;
+  width: 100%;
+  background: black;
+  h2 {
+    margin-bottom: 0;
+  }
 }
