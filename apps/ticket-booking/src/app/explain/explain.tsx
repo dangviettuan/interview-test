@@ -22,15 +22,15 @@ export function Explain(props: ExplainProps) {
       <div className="explain-seat-container ">
         <div className="explain-seat">
           <div className="circle circle-seat-standard"></div>
-          <div>Standard</div>
+          <div>Standard - 60.000đ</div>
         </div>
         <div className="explain-seat">
           <div className="circle circle-seat-vip"></div>
-          <div>VIP</div>
+          <div>VIP - 90.000đ</div>
         </div>
         <div className="explain-seat">
           <div className="circle circle-seat-deluxe"></div>
-          <div>Deluxe</div>
+          <div>Deluxe - 110.000đ</div>
         </div>
       </div>
     </div>
