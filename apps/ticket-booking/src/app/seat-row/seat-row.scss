@@ -1,0 +1,14 @@
+.seat-row {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.seat-row-label {
+  color: white;
+  text-transform: uppercase;
+  font-weight: bolder;
+  margin-right: 10px;
+  display: inline-flex;
+  padding: 8px;
+}

@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { ReactNode, ReactNodeArray } from 'react';
 
 import './seat-row.scss';
 
-/* eslint-disable-next-line */
-export interface SeatRowProps {}
+export interface SeatRowProps {
+  label?: string;
+  children?: ReactNode | ReactNodeArray;
+}
 
 export function SeatRow(props: SeatRowProps) {
+  const { children, label } = props;
   return (
-    <div>
-      <h1>Welcome to SeatRow!</h1>
+    <div className="seat-row">
+      <div className="seat-row-label">{label}</div>
+      {children}
     </div>
   );
 }
