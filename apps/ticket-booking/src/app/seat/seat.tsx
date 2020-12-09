@@ -2,14 +2,8 @@ import React from 'react';
 import clsx from 'clsx';
 
 import './seat.scss';
+import { SeatStatus, SeatType } from '../types';
 
-export type SeatStatus =
-  | 'empty'
-  | 'selected'
-  | 'selecting'
-  | 'available'
-  | 'sold';
-export type SeatType = 'standard' | 'vip' | 'deluxe';
 export interface SeatProps {
   row?: string;
   col?: number;
@@ -22,7 +16,9 @@ export function Seat(props: SeatProps) {
   const { col, onClick, row, status, type } = props;
   const handleOnClick = () => {
     if (status === 'available' || status === 'selected') {
-      onClick(row, col);
+      if (onClick) {
+        onClick(row, col);
+      }
     }
   };
   return (
