@@ -12,9 +12,19 @@ export function Theater(props: TheaterProps) {
 
   return (
     <div className="theater">
-      <TransformWrapper defaultScale={0.5}>
+      <TransformWrapper
+        doubleClick={{
+          disabled: true,
+        }}
+        options={
+          {
+            // limitToBounds: false,
+            // limitToWrapper: false,
+          }
+        }
+      >
         <TransformComponent>
-          <div>{children}</div>
+          <div className="theater-container">{children}</div>
         </TransformComponent>
       </TransformWrapper>
     </div>
