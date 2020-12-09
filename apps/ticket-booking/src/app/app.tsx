@@ -51,10 +51,10 @@ export function App() {
               {row.seats.map((seat, seatIndex) => (
                 <Seat
                   onClick={handleSeatClick}
-                  key={seatIndex}
+                  key={seatIndex + 1}
                   type={seat.type}
-                  status={isSelected(row.name, seatIndex, seat.status)}
-                  col={seatIndex}
+                  status={isSelected(row.name, seatIndex + 1, seat.status)}
+                  col={seatIndex + 1}
                   row={row.name}
                 />
               ))}
