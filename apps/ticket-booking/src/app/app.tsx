@@ -8,21 +8,32 @@ import Theater from './theater/theater';
 import { data } from './data';
 import SeatRow from './seat-row/seat-row';
 import { Seat } from './seat/seat';
-import { SeatStatus } from './types';
+import { SeatStatus, SeatType } from './types';
 import Header from './header/header';
 import Explain from './explain/explain';
+import Summary from './summary/summary';
+
+const prices = {
+  standard: 60000,
+  vip: 90000,
+  deluxe: 110000,
+};
 export function App() {
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
-  const handleSeatClick = (row?: string, col?: number) => {
+  const [total, setTotal] = useState(0);
+
+  const handleSeatClick = (row: string, col: number, type: SeatType) => {
     console.log('Selected');
 
     const found = selectedSeats.findIndex((item) => item === `${row}${col}`);
     if (found >= 0) {
       selectedSeats.splice(found, 1);
+      setTotal(total - prices[type]);
     } else {
       if (selectedSeats.length < 6) {
         selectedSeats.push(`${row}${col}`);
+        setTotal(total + prices[type]);
       }
     }
     setSelectedSeats([...selectedSeats]);
@@ -56,7 +67,7 @@ export function App() {
             <SeatRow key={rowIndex} label={row.name}>
               {row.seats.map((seat, seatIndex) => (
                 <Seat
-                  onClick={handleSeatClick}
+                  onClick={(row, col) => handleSeatClick(row, col, seat.type)}
                   key={seatIndex + 1}
                   type={seat.type}
                   status={isSelected(row.name, seatIndex + 1, seat.status)}
@@ -68,6 +79,13 @@ export function App() {
           ))}
         </Theater>
         <Explain />
+        <Summary
+          date={data.time.date}
+          from={data.time.from}
+          to={data.time.to}
+          location={data.location}
+          total={total}
+        />
       </div>
     </div>
   );
