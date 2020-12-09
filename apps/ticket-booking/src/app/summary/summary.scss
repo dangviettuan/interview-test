@@ -1,0 +1,49 @@
+.summary {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  > div {
+    margin-bottom: 10px;
+    font-size: 20px;
+  }
+}
+
+.buttons-group {
+  display: flex;
+  justify-content: center;
+}
+
+.summary-button {
+  height: 50px;
+  font-size: large;
+  background-color: black;
+  color: white;
+  outline: none;
+  border: none;
+  padding: 10px 15px;
+  width: 150px;
+}
+
+.spacing {
+  margin-left: 20px;
+}
+
+.price {
+  font-size: 30px;
+  font-weight: bolder;
+  .unit {
+    font-size: 15px;
+  }
+}
